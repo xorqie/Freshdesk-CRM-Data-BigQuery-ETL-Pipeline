@@ -13,28 +13,24 @@ query-ready tables in a cloud data warehouse.
 
 ---
 
-## Why this project matters
+## Engineering approach
 
 Support teams generate constant operational data — ticket volume, SLA
-performance, customer sentiment — but that data is only valuable if it's
-reliable, current, and easy to build reporting on top of. This project
-demonstrates the skill set behind that: turning a messy, credential-
-hardcoded API script into a pipeline that a business could actually run
-on a schedule and trust the numbers coming out of it.
+performance, customer sentiment — but that data is only useful if it's
+reliable, current, and easy to build reporting on top of. The design
+choices in this pipeline are built around that:
 
-**Principles applied:**
 - **Correctness over speed** — full-refresh vs. incremental loading is
-  chosen deliberately per table based on how the underlying data
-  actually changes, not applied uniformly.
-- **No hardcoded secrets, ever** — every credential is environment-driven,
+  chosen deliberately per table based on how the underlying data actually
+  changes, not applied uniformly.
+- **No hardcoded secrets** — every credential is environment-driven,
   which is table stakes for anything meant to run outside a personal
   laptop.
 - **Resilience by default** — API pagination, rate limits, and retries
-  are handled once, correctly, rather than hoped for.
-- **Documentation as a deliverable, not an afterthought** — schema
-  references and architecture diagrams exist so another engineer (or a
-  non-technical stakeholder building a dashboard) can pick this up
-  without asking questions.
+  are handled once, correctly, at the client level rather than per script.
+- **Documentation as a deliverable** — schema references and architecture
+  diagrams exist so another engineer, or a non-technical stakeholder
+  building a dashboard, can pick this up without asking questions.
 
 ---
 
